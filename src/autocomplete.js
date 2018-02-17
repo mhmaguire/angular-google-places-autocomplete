@@ -194,12 +194,20 @@ angular.module('google.places', [])
 
                                 clearPredictions();
 
+                                if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+                                    $scope.model = {
+                                        status: status,
+                                        formatted_address: $scope.query
+                                    };
+                                }
+
                                 if ($scope.customPlaces) {
                                     customPlacePredictions = getCustomPlacePredictions($scope.query);
                                     $scope.predictions.push.apply($scope.predictions, customPlacePredictions);
                                 }
 
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
+                                    $scope.model = $scope.query;
                                     $scope.predictions.push.apply($scope.predictions, predictions);
                                 }
 
