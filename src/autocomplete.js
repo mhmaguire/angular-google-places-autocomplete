@@ -126,7 +126,6 @@ angular.module('google.places', [])
                         } else if (event.which === 27) {
                             $scope.$apply(function () {
                                 event.stopPropagation();
-                                clearPredictions();
                             });
                         }
                     }
